@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Pizza Palace </title>
+    <link href="~/mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="~/mdb/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="https://ih1.redbubble.net/image.1246641818.4312/st,small,507x507-pad,600x600,f8f8f8.jpg" width="50" height="40" alt=""> Pizza Palace</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pizza" asp-action="ManagePosts">Manage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pizza" asp-action="Create">Create</a>
+                        </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Lesson10_FinalProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="~/mdb/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/mdb/js/popper.min.js"></script>
+    <script type="text/javascript" src="~/mdb/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/mdb/js/mdb.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

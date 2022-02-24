@@ -1,0 +1,17 @@
+
+@model Lesson10_FinalProject.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+
+<div>
+    <img src="@Model.PostPhoto">
+    <p>@Html.DisplayFor(model => model.Content)</p>
+    <small class="text-muted">@Html.DisplayFor(model => model.TimeStamp)</small>
+</div>
+<div>
+    | <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,62 @@
+@model IEnumerable<Lesson10_FinalProject.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pizza Palace</h1>
+
+<div class="post-wrapper">
+
+@foreach (var post in Model)
+{
+    <div class="card hover-overlay hover-zoom hover-shadow-1-strong ripple rounded" style="width: 18rem;"
+    data-mdb-ripple-color="light">
+        <img src="@post.PostPhoto" class="card-img-top" alt="@post.Title">
+        <div class="card-body">
+            <h5 class="card-title font-weight-bold">@post.Title</h5>
+            <p class="card-text">@post.Description</p>
+            <small class="text-muted">Written by @(post.User.Email)</small>
+            <a href="pizza/details/@post.PostId">
+                <div class="mask"></div>
+            </a>
+        </div>
+    </div>
+}
+</div>
+@* <table class="table">
+    <thead>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.Title)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Content)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.TimeStamp)
+    </th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody> *@
+@* @foreach (var item in Model) {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Content)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.TimeStamp)
+    </td>
+    <td>
+    <a asp-action="Edit" asp-route-id="@item.PostId">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.PostId">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table> *@
